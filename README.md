@@ -178,7 +178,7 @@ test.only("OrangeHRM Login Test Functionality", async ({ page }) => {
 ```
 
 ## Slow Motion and Video Recording
-Enable slow motion and video recording via Playwright's configuration file.
+- **Enable slow motion and video recording via Playwright's configuration file**.
 
 In playwright.config.js:
 
@@ -189,6 +189,12 @@ use: {
         slowMo: 1000 // 1 second delay
     }
 },
+```
+### Viewing the Recorded Videos
+- **Once the tests have been executed, you can find the video recordings in the output folder**:
+
+```bash
+test-results/your-test-name/video.mp4
 ```
 
 ## Video recording modes:
