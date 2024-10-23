@@ -32,7 +32,7 @@ Note: npx is used to execute Playwright commands locally.
 
 To run Playwright tests, use the following commands:
 
-- **Run all tests in headless mode**:
+- **Run all tests in headless mode:
   ```bash
   npx playwright test
   ```
@@ -57,122 +57,141 @@ npx playwright test one.spec.js two.spec.js
 ```bash
 npx playwright test one two
 ```
-Run a test by title:
+- **Run a test by title:
 
-bash
-Copy code
+```bash
 npx playwright test -g "check title"
-Run tests on a specific browser in headless mode:
+```
+- **Run tests on a specific browser in headless mode:
 
-bash
-Copy code
+```bash
 npx playwright test --project=chromium
-Run tests on a specific browser with the browser open (headed mode):
+```
+- **Run tests on a specific browser with the browser open (headed mode):
 
-bash
-Copy code
+```bash
 npx playwright test --project=chromium --headed
-Run tests in debug mode:
+```
+- **Run tests in debug mode:
 
-bash
-Copy code
+```bash
 npx playwright test --project=chromium --debug
-Debug a specific test file:
+```
+- **Debug a specific test file:
 
-bash
-Copy code
+```bash
 npx playwright test example.spec.js --debug
-Debug a specific line in a test file (e.g., line 21):
+```
+- **Debug a specific line in a test file (e.g., line 21):
 
-bash
-Copy code
+```bash
 npx playwright test example.spec.js:21 --debug
-Assertions
-Assertions are used to check whether the actual output matches the expected output:
+```
+
+## Assertions
+- **Assertions are used to check whether the actual output matches the expected output:
 
 Check if an element is visible:
 
-javascript
-Copy code
+```javascript
 await expect(page.locator("text=The Kitchen")).toBeVisible();
-Soft assertions to continue execution even if a test fails:
+```
+- **Soft assertions to continue execution even if a test fails:
 
-javascript
-Copy code
+```javascript
 await expect.soft(page.locator("text=The Kitchen")).toBeHidden();
-Code Generation
+```
+
+## Code Generation
 Playwright comes with a built-in tool for recording tests. This opens two windows: a browser window to interact with the website and an inspector window to record tests.
 
-To record on a specific browser:
+- **To record on a specific browser:
 
-bash
-Copy code
+```bash
 npx playwright codegen --browser=firefox
-Record and save to a file:
+```
+- **Record and save to a file:
 
-bash
-Copy code
+```bash
 npx playwright codegen --target=javascript -o record_test.spec.js
-Set viewport size during recording:
+```
+- **Set viewport size during recording:
 
-bash
-Copy code
+```bash
 npx playwright codegen --viewport-size=800,600
-Emulate a device:
+```
+- **Emulate a device:
 
-bash
-Copy code
+```bash
 npx playwright codegen --device="iPhone 11"
-Emulate a dark color scheme:
+```
+- **Emulate a dark color scheme:
 
-bash
-Copy code
+```bash
 npx playwright codegen --color-scheme=dark
-Trace Viewer
+```
+
+## Trace Viewer
 Playwright Trace Viewer is a GUI tool to view executed tests, snapshots, timeline, and failure details.
 
 To enable tracing, modify the playwright.config.js file:
 
-javascript
-Copy code
+```javascript
+
 trace: 'on-first-retry',
 retries: 1,
+```
 To view the trace file:
 
-bash
-Copy code
+```bash
 npx playwright show-trace ./test-results/trace.zip
-Different trace modes:
+```
 
-on-first-retry: Record trace only when retrying the test for the first time.
-on: Record a trace for every test.
-off: Do not trace tests.
-retain-on-failure: Record trace for each test but remove it once successful.
-View Trace Online
-Visit trace.playwright.dev and drag and drop your trace.zip file.
+## Different Trace Modes
 
-Flaky Tests
-Flaky tests produce inconsistent results (sometimes they pass, sometimes they fail). These tests make it difficult to determine whether the failure is due to the code or the test itself.
+Playwright offers multiple trace modes for debugging tests. You can configure these modes based on your test scenarios:
 
-To run only a specific test:
+- **on-first-retry**: Records a trace only when retrying the test for the first time.
+- **on**: Records a trace for every test.
+- **off**: Disables tracing for tests.
+- **retain-on-failure**: Records a trace for each test but removes it once the test is successful.
 
-javascript
-Copy code
-test.only("OrangeHRM Login Test Functionality", async ({ page }) => {});
-Slow Motion and Video Recording
+## View Trace Online
+
+To view the trace, follow these steps:
+
+1. Visit [trace.playwright.dev](https://trace.playwright.dev).
+2. Drag and drop your `trace.zip` file onto the page to view the trace details.
+
+## Flaky Tests
+
+Flaky tests produce inconsistent results—sometimes they pass, and sometimes they fail. This inconsistency makes it difficult to determine whether the failure is caused by the code or the test itself. Identifying and fixing flaky tests is crucial for maintaining reliable test suites.
+
+### Running a Specific Test
+
+To isolate and run only a specific test, use the `.only()` method as shown below:
+
+```javascript
+test.only("OrangeHRM Login Test Functionality", async ({ page }) => {
+  // Your test code here
+});
+```
+
+## Slow Motion and Video Recording
 Enable slow motion and video recording via Playwright's configuration file.
 
 In playwright.config.js:
 
-javascript
-Copy code
+```javascript
 use: {
     video: 'on',
     launchOptions: {
         slowMo: 1000 // 1 second delay
     }
 },
-Video recording modes:
+```
+
+## Video recording modes:
 
 on: Record a video for each test.
 off: Don’t record videos.
