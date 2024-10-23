@@ -91,7 +91,7 @@ npx playwright test example.spec.js:21 --debug
 ## Assertions
 - **Assertions are used to check whether the actual output matches the expected output**:
 
-Check if an element is visible**:
+- **Check if an element is visible**:
 
 ```javascript
 await expect(page.locator("text=The Kitchen")).toBeVisible();
@@ -137,7 +137,6 @@ Playwright Trace Viewer is a GUI tool to view executed tests, snapshots, timelin
 - **To enable tracing, modify the playwright.config.js file**:
 
 ```javascript
-
 trace: 'on-first-retry',
 retries: 1,
 ```
@@ -158,7 +157,7 @@ Playwright offers multiple trace modes for debugging tests. You can configure th
 
 ## View Trace Online
 
-To view the trace, follow these steps:
+- **To view the trace, follow these steps**:
 
 1. Visit [trace.playwright.dev](https://trace.playwright.dev).
 2. Drag and drop your `trace.zip` file onto the page to view the trace details.
