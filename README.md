@@ -89,7 +89,7 @@ npx playwright test example.spec.js:21 --debug
 ```
 
 ## Assertions
-- **Assertions are used to check whether the actual output matches the expected output:
+- **Assertions are used to check whether the actual output matches the expected output**:
 
 Check if an element is visible**:
 
