@@ -4,18 +4,18 @@
 
 ### 1. Using VSCode Terminal
 
-- **Run the following command to install Playwright:
+- **Run the following command to install Playwright**:
 
 ```bash
 npm init playwright@latest
 ```
 
-- Verify installation and Playwright version:
+- **Verify installation and Playwright version**:
 
 ``` bash
 npm playwright -v
 ```
-Check available Playwright commands:
+- **Check available Playwright commands**:
 
 ```bash
 npx playwright -h
@@ -57,7 +57,7 @@ npx playwright test one.spec.js two.spec.js
 ```bash
 npx playwright test one two
 ```
-- **Run a test by title:
+- **Run a test by title**:
 
 ```bash
 npx playwright test -g "check title"
@@ -67,22 +67,22 @@ npx playwright test -g "check title"
 ```bash
 npx playwright test --project=chromium
 ```
-- **Run tests on a specific browser with the browser open (headed mode):
+- **Run tests on a specific browser with the browser open (headed mode)**:
 
 ```bash
 npx playwright test --project=chromium --headed
 ```
-- **Run tests in debug mode:
+- **Run tests in debug mode**:
 
 ```bash
 npx playwright test --project=chromium --debug
 ```
-- **Debug a specific test file:
+- **Debug a specific test file**:
 
 ```bash
 npx playwright test example.spec.js --debug
 ```
-- **Debug a specific line in a test file (e.g., line 21):
+- **Debug a specific line in a test file (e.g., line 21)**:
 
 ```bash
 npx playwright test example.spec.js:21 --debug
@@ -91,12 +91,12 @@ npx playwright test example.spec.js:21 --debug
 ## Assertions
 - **Assertions are used to check whether the actual output matches the expected output:
 
-Check if an element is visible:
+Check if an element is visible**:
 
 ```javascript
 await expect(page.locator("text=The Kitchen")).toBeVisible();
 ```
-- **Soft assertions to continue execution even if a test fails:
+- **Soft assertions to continue execution even if a test fails**:
 
 ```javascript
 await expect.soft(page.locator("text=The Kitchen")).toBeHidden();
@@ -120,7 +120,7 @@ npx playwright codegen --target=javascript -o record_test.spec.js
 ```bash
 npx playwright codegen --viewport-size=800,600
 ```
-- **Emulate a device:
+- **Emulate a device**:
 
 ```bash
 npx playwright codegen --device="iPhone 11"
@@ -224,7 +224,7 @@ expect: {
 - **afterAll()**: Runs once after all tests.
 
 ### Grouping Tests
-Use describe to group related tests:
+- **Use describe to group related tests**:
 
 ```javascript
 describe('My Tests', () => {
@@ -287,8 +287,7 @@ npx playwright test --grep @smoke
 - **Steps to implement POM with Playwright**:
 
 1. Create a new folder and open VSCode.
-
-2.Initialize a Playwright project:
+2. Initialize a Playwright project:
 
 ```bash
 npm init playwright@latest
