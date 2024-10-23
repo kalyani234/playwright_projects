@@ -32,27 +32,27 @@ Note: npx is used to execute Playwright commands locally.
 
 To run Playwright tests, use the following commands:
 
-- **Run all tests in headless mode:
+- **Run all tests in headless mode**:
   ```bash
   npx playwright test
   ```
 
-- **Run tests with 3 workers in parallel:
+- **Run tests with 3 workers in parallel**:
 
 ```bash
 npx playwright test --workers=3
 ```
-- **Run a specific test file:
+- **Run a specific test file**:
 
 ```bash
 npx playwright test one.spec.js
 ```
-- **Run multiple test files:
+- **Run multiple test files**:
 
 ```bash
 npx playwright test one.spec.js two.spec.js
 ```
-- **Run files that have names containing one or two:
+- **Run files that have names containing one or two**:
 
 ```bash
 npx playwright test one two
@@ -62,7 +62,7 @@ npx playwright test one two
 ```bash
 npx playwright test -g "check title"
 ```
-- **Run tests on a specific browser in headless mode:
+- **Run tests on a specific browser in headless mode**:
 
 ```bash
 npx playwright test --project=chromium
@@ -105,17 +105,17 @@ await expect.soft(page.locator("text=The Kitchen")).toBeHidden();
 ## Code Generation
 Playwright comes with a built-in tool for recording tests. This opens two windows: a browser window to interact with the website and an inspector window to record tests.
 
-- **To record on a specific browser:
+- **To record on a specific browser**:
 
 ```bash
 npx playwright codegen --browser=firefox
 ```
-- **Record and save to a file:
+- **Record and save to a file**:
 
 ```bash
 npx playwright codegen --target=javascript -o record_test.spec.js
 ```
-- **Set viewport size during recording:
+- **Set viewport size during recording**:
 
 ```bash
 npx playwright codegen --viewport-size=800,600
@@ -125,7 +125,7 @@ npx playwright codegen --viewport-size=800,600
 ```bash
 npx playwright codegen --device="iPhone 11"
 ```
-- **Emulate a dark color scheme:
+- **Emulate a dark color scheme**:
 
 ```bash
 npx playwright codegen --color-scheme=dark
@@ -134,14 +134,14 @@ npx playwright codegen --color-scheme=dark
 ## Trace Viewer
 Playwright Trace Viewer is a GUI tool to view executed tests, snapshots, timeline, and failure details.
 
-To enable tracing, modify the playwright.config.js file:
+- **To enable tracing, modify the playwright.config.js file**:
 
 ```javascript
 
 trace: 'on-first-retry',
 retries: 1,
 ```
-To view the trace file:
+- **To view the trace file**:
 
 ```bash
 npx playwright show-trace ./test-results/trace.zip
@@ -193,130 +193,133 @@ use: {
 
 ## Video recording modes:
 
-on: Record a video for each test.
-off: Don’t record videos.
-retain-on-failure: Record videos for tests but remove successful test videos.
-on-first-retry: Record video only when retrying the test for the first time.
+- **on:** Record a video for each test.
+- **off**: Don’t record videos.
+- **retain-on-failure**: Record videos for tests but remove successful test videos.
+- **on-first-retry**: Record video only when retrying the test for the first time.
 Alternatively, enable slow motion and video recording in the test file:
 
-javascript
-Copy code
+```javascript
 const browser = await chromium.launch({ slowMo: 2000, headless: false });
 const context = await browser.newContext({
     recordVideo: { dir: 'videos/', size: { width: 800, height: 600 } }
 });
 await context.close();
-Timeouts
-Specify timeouts in the configuration:
+```
+### Timeouts
+- **Specify timeouts in the configuration**:
 
-javascript
+```javascript
 Copy code
 timeout: 10 * 1000,
 expect: {
   timeout: 5000
 },
-Hooks and Groups
-Hooks
-beforeAll(): Runs once before all tests.
-beforeEach(): Runs before each individual test.
-afterEach(): Runs after each individual test.
-afterAll(): Runs once after all tests.
-Grouping Tests
+```
+## Hooks and Groups
+### Hooks
+- **beforeAll()**: Runs once before all tests.
+- **beforeEach()**: Runs before each individual test.
+- **afterEach()**: Runs after each individual test.
+- **afterAll()**: Runs once after all tests.
+
+### Grouping Tests
 Use describe to group related tests:
 
-javascript
-Copy code
+```javascript
 describe('My Tests', () => {
   beforeAll(() => { /* setup */ });
   afterAll(() => { /* teardown */ });
 
   test('example test', () => { /* test */ });
 });
-Annotations
+```
+
+### Annotations
 Annotations modify test behavior:
 
-Skip:
+- **Skip**:
 
-javascript
-Copy code
+```javascript
 test.skip('message');
-Only:
+```
+- **Only**:
 
-javascript
-Copy code
+```javascript
 test.only('message');
-Fail:
+```
+- **Fail**:
 
-javascript
-Copy code
+```javascript
 test.fail('message');
-Fixme:
+```
+- **Fixme**:
 
-javascript
-Copy code
+```javascript
 test.fixme('message');
-Slow:
+```
 
+- **Slow**:
+  
+```
 javascript
-Copy code
 test.slow('message');
-Set custom timeout:
+```
+- **Set custom timeout**:
 
-javascript
-Copy code
+```javascript
 test.setTimeout(timeout);
-Tagging Tests
-To tag tests, add a tag in the title (e.g., @smoke):
+```
+### Tagging Tests
+- **To tag tests, add a tag in the title (e.g., @smoke)**:
 
-javascript
-Copy code
+```javascript
 test('My test @smoke', async ({ page }) => { /* test */ });
-Run tests by tag:
+```
 
-bash
-Copy code
+### Run tests by tag:
+
+```bash
 npx playwright test --grep @smoke
-Page Object Model (POM)
-Steps to implement POM with Playwright:
+```
 
-Create a new folder and open VSCode.
+## Page Object Model (POM)
+- **Steps to implement POM with Playwright**:
 
-Initialize a Playwright project:
+1. Create a new folder and open VSCode.
 
-bash
-Copy code
+2.Initialize a Playwright project:
+
+```bash
 npm init playwright@latest
-Add tests in the tests folder.
+```
+3. Add tests in the tests folder.
+4. Execute the test:
 
-Execute the test:
-
-bash
-Copy code
+```bash
 npx playwright test ./tests/login.spec.js --project=chromium --headed
-Create a Pages folder for page objects.
+```
+5. Create a Pages folder for page objects.
+6.  Create a new file and class for each page, e.g., login.js.
+7.  Define element locators and action methods in the page class.
 
-Create a new file and class for each page, e.g., login.js.
+### Playwright API
+1. Create a new folder.
+2. Open the folder in VSCode and initialize Playwright:
 
-Define element locators and action methods in the page class.
-
-Playwright API
-Create a new folder.
-
-Open the folder in VSCode and initialize Playwright:
-
-bash
-Copy code
+```bash
 npm init playwright@latest
+```
 Example: Send a GET request and assert status code 200.
 
-javascript
-Copy code
+``` javascript
 const response = await page.request.get('https://example.com');
 expect(response.status()).toBe(200);
+```
+
 Happy testing! 🎭
 
-typescript
-Copy code
+
 
 You can save this as a `README.md` file for better readability in markdown format. Let me know if you need any modifications!
 
