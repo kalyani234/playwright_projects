@@ -4,16 +4,11 @@
 2. It enables reliable browser automation, supporting all major modern browsers.
 
 ### Key Features:
-1. Cross-Browser Support:
-  - Works with Chromium (Chrome, Edge), Firefox, and WebKit (Safari).
-2. Multiple Languages:
-   - Available in JavaScript, TypeScript, Python, C#, and Java.
-3. Headless & Headed Modes:
-   - Can run tests with or without a visible browser, suitable for CI/CD.
-4. User Interactions:
-   - Automates clicks, typing, and other interactions to simulate real users.
-5. Parallel Execution:
-   - Runs multiple tests at once for faster execution.
+1. Cross-Browser Support: Works with Chromium (Chrome, Edge), Firefox, and WebKit (Safari).
+2. Multiple Languages: Available in JavaScript, TypeScript, Python, C#, and Java.
+3. Headless & Headed Modes: Can run tests with or without a visible browser, suitable for CI/CD.
+4. User Interactions: Automates clicks, typing, and other interactions to simulate real users.
+5. Parallel Execution: Runs multiple tests at once for faster execution.
 
 # Playwright Setup and Commands
 
@@ -105,7 +100,7 @@ npx playwright test example.spec.js --debug
 npx playwright test example.spec.js:21 --debug
 ```
 # Project Structure
-
+```
 project-root/
 │
 ├── tests/                    # Contains all test files
@@ -119,6 +114,7 @@ project-root/
 │
 ├── package.json              # Dependencies and scripts
 └── README.md                 # Project documentation
+```
 
 ### File Details and Code Snippets
 
@@ -127,20 +123,22 @@ Configuration file for Playwright settings, like base URLs and browser options.
 
  Sample content:
 cat > playwright.config.js <<'EOF'
+```javascript
 module.exports = {
   use: {
     headless: true,                      # Run tests without browser UI
     baseURL: 'https://example.com',      # Base URL for tests
   },
 };
-
+```
 
 ### tests/
 1. Directory containing test files (e.g., login.spec.js).
-2.  Each file includes test cases for a specific feature or page.
+2. Each file includes test cases for a specific feature or page.
 
 - **Sample test file content (tests/login.spec.js)**:
 cat > tests/login.spec.js <<'EOF'
+```javascript
 const { test, expect } = require('@playwright/test');
 
 test('should login with valid credentials', async ({ page }) => {
@@ -151,12 +149,13 @@ test('should login with valid credentials', async ({ page }) => {
   await expect(page).toHaveURL('/dashboard');  # Check if redirected to dashboard
 });
 
-
+```
 ### pages/ (optional)
 - **Contains Page Object Model (POM) files (e.g., loginPage.js) to manage page selectors and actions**.
 
 - **Sample POM content (pages/loginPage.js)**:
 cat > pages/loginPage.js <<'EOF'
+```javascript
 class LoginPage {
   constructor(page) {
     this.page = page;
@@ -177,23 +176,30 @@ class LoginPage {
 }
 
 module.exports = LoginPage;
+```
 
+### package.json
+Manages dependencies and scripts to run tests.
+Use this command to initialize the package.json file:
 
-# package.json
-# Manages dependencies and scripts to run tests.
-# Use this command to initialize the package.json file:
+```bash
 npm init -y
+```
 
-# Install Playwright dependency:
+### Install Playwright dependency:
+```bash
 npm install @playwright/test
+```
 
-# Add a test script in package.json:
-# "scripts": {
-#   "test": "npx playwright test"
-# }
+### Add a test script in package.json:
+```bash
+ "scripts": {
+  "test": "npx playwright test"
+  }
+```
 
-# README.md
-# Documentation for project setup and structure, including how to run tests and understand each part of the project.
+### README.md
+Documentation for project setup and structure, including how to run tests and understand each part of the project.
 
 ## Assertions
 - **Assertions are used to check whether the actual output matches the expected output**:
