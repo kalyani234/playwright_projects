@@ -99,7 +99,7 @@ npx playwright test example.spec.js --debug
 ```bash
 npx playwright test example.spec.js:21 --debug
 ```
-# Project Structure
+## Project Structure
 ```
 project-root/
 │
@@ -116,7 +116,7 @@ project-root/
 └── README.md                 # Project documentation
 ```
 
-### File Details and Code Snippets
+### 1. File Details and Code Snippets
 
 - **playwright.config.js**
 Configuration file for Playwright settings, like base URLs and browser options.
@@ -132,11 +132,10 @@ module.exports = {
 };
 ```
 
-### tests/
-1. Directory containing test files (e.g., login.spec.js).
-2. Each file includes test cases for a specific feature or page.
-
-- **Sample test file content (tests/login.spec.js)**:
+### 2. tests/
+ - **Directory containing test files (e.g., login.spec.js)**.
+ - **Each file includes test cases for a specific feature or page**.
+ - **Sample test file content (tests/login.spec.js)**:
 cat > tests/login.spec.js <<'EOF'
 ```javascript
 const { test, expect } = require('@playwright/test');
@@ -150,9 +149,8 @@ test('should login with valid credentials', async ({ page }) => {
 });
 
 ```
-### pages/ (optional)
+### 3. pages/ (optional)
 - **Contains Page Object Model (POM) files (e.g., loginPage.js) to manage page selectors and actions**.
-
 - **Sample POM content (pages/loginPage.js)**:
 cat > pages/loginPage.js <<'EOF'
 ```javascript
@@ -178,7 +176,7 @@ class LoginPage {
 module.exports = LoginPage;
 ```
 
-### package.json
+### 4. package.json
 Manages dependencies and scripts to run tests.
 Use this command to initialize the package.json file:
 
@@ -186,19 +184,19 @@ Use this command to initialize the package.json file:
 npm init -y
 ```
 
-### Install Playwright dependency:
+### 5. Install Playwright dependency:
 ```bash
 npm install @playwright/test
 ```
 
-### Add a test script in package.json:
+### 6. Add a test script in package.json:
 ```bash
  "scripts": {
   "test": "npx playwright test"
   }
 ```
 
-### README.md
+### 7. README.md
 Documentation for project setup and structure, including how to run tests and understand each part of the project.
 
 ## Assertions
