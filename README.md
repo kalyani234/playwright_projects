@@ -1,23 +1,19 @@
 # Introduction to Playwright
 
-# Playwright is an open-source, end-to-end testing framework by Microsoft.
-# It enables reliable browser automation, supporting all major modern browsers.
+1. Playwright is an open-source, end-to-end testing framework by Microsoft.
+2. It enables reliable browser automation, supporting all major modern browsers.
 
-# Key Features:
-# 1. Cross-Browser Support:
-#    - Works with Chromium (Chrome, Edge), Firefox, and WebKit (Safari).
-# 
-# 2. Multiple Languages:
-#    - Available in JavaScript, TypeScript, Python, C#, and Java.
-
-# 3. Headless & Headed Modes:
-#    - Can run tests with or without a visible browser, suitable for CI/CD.
-
-# 4. User Interactions:
-#    - Automates clicks, typing, and other interactions to simulate real users.
-
-# 5. Parallel Execution:
-#    - Runs multiple tests at once for faster execution.
+### Key Features:
+1. Cross-Browser Support:
+  - Works with Chromium (Chrome, Edge), Firefox, and WebKit (Safari).
+2. Multiple Languages:
+   - Available in JavaScript, TypeScript, Python, C#, and Java.
+3. Headless & Headed Modes:
+   - Can run tests with or without a visible browser, suitable for CI/CD.
+4. User Interactions:
+   - Automates clicks, typing, and other interactions to simulate real users.
+5. Parallel Execution:
+   - Runs multiple tests at once for faster execution.
 
 # Playwright Setup and Commands
 
@@ -124,12 +120,12 @@ project-root/
 ├── package.json              # Dependencies and scripts
 └── README.md                 # Project documentation
 
-# File Details and Code Snippets
+### File Details and Code Snippets
 
-# playwright.config.js
-# Configuration file for Playwright settings, like base URLs and browser options.
+- **playwright.config.js**
+Configuration file for Playwright settings, like base URLs and browser options.
 
-# Sample content:
+ Sample content:
 cat > playwright.config.js <<'EOF'
 module.exports = {
   use: {
@@ -137,13 +133,13 @@ module.exports = {
     baseURL: 'https://example.com',      # Base URL for tests
   },
 };
-EOF
 
-# tests/
-# Directory containing test files (e.g., login.spec.js).
-# Each file includes test cases for a specific feature or page.
 
-# Sample test file content (tests/login.spec.js):
+### tests/
+1. Directory containing test files (e.g., login.spec.js).
+2.  Each file includes test cases for a specific feature or page.
+
+- **Sample test file content (tests/login.spec.js)**:
 cat > tests/login.spec.js <<'EOF'
 const { test, expect } = require('@playwright/test');
 
@@ -154,12 +150,12 @@ test('should login with valid credentials', async ({ page }) => {
   await page.click('button[type="submit"]');   # Click login button
   await expect(page).toHaveURL('/dashboard');  # Check if redirected to dashboard
 });
-EOF
 
-# pages/ (optional)
-# Contains Page Object Model (POM) files (e.g., loginPage.js) to manage page selectors and actions.
 
-# Sample POM content (pages/loginPage.js):
+### pages/ (optional)
+- **Contains Page Object Model (POM) files (e.g., loginPage.js) to manage page selectors and actions**.
+
+- **Sample POM content (pages/loginPage.js)**:
 cat > pages/loginPage.js <<'EOF'
 class LoginPage {
   constructor(page) {
@@ -181,7 +177,7 @@ class LoginPage {
 }
 
 module.exports = LoginPage;
-EOF
+
 
 # package.json
 # Manages dependencies and scripts to run tests.
